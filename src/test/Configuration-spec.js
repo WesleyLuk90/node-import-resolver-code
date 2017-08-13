@@ -1,4 +1,3 @@
-'use babel';
 import Configuration from '../Configuration';
 
 describe('Configuration', () => {

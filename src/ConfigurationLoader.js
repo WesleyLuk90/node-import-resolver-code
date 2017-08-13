@@ -1,4 +1,3 @@
-'use babel';
 import Configuration from './Configuration';
 import bluebird from 'bluebird';
 import path from 'path';
