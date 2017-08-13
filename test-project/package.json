@@ -1,0 +1,8 @@
+{
+    "dependencies": {
+        "a-package": "123"
+    },
+    "devDependencies": {
+        "b-package": "123"
+    }
+}
