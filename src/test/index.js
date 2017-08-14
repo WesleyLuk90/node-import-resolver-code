@@ -1,7 +1,6 @@
 const Jasmine = require('jasmine');
-const fs = require('fs');
-const util = require('util');
 const path = require('path');
+require('source-map-support').install();
 
 class CustomReporter {
     constructor(done) {
@@ -51,6 +50,10 @@ module.exports = {
         const reporter = new CustomReporter(done);
         jasmine.onComplete(() => reporter.reportDone());
         jasmine.addReporter(reporter);
-        jasmine.execute();
+        try {
+            jasmine.execute();
+        } catch (e) {
+            done(e.stack);
+        }
     }
 };
