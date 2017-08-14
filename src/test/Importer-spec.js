@@ -9,7 +9,7 @@ describe('Importer', () => {
     });
 
     it('should import automatically', () => {
-        EditorUtils.setText(`'use strict';
+        return EditorUtils.setText(`'use strict';
 import a from 'b';
 
 ASecondImport
@@ -20,7 +20,7 @@ function(){};`)
             .then(() => {
                 expect(Editor.getText()).toEqual(`'use strict';
 import a from 'b';
-import ASecondImport from './a-second-import';
+import ASecondImport from '../a-second-import';
 
 ASecondImport
 
