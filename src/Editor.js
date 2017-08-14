@@ -4,7 +4,11 @@ import EditorPosition from './EditorPosition';
 
 export default class Editor {
     static getWorkspaceFolders() {
-        return vscode.workspace.workspaceFolders.map(f => f.uri);
+        return vscode.workspace.workspaceFolders.map(f => f.uri.fsPath);
+    }
+
+    static getFilePath() {
+        return vscode.window.activeTextEditor.document.uri.fsPath;
     }
 
     static getEditorCursorStart() {
@@ -23,5 +27,17 @@ export default class Editor {
         const range = new vscode.Range(new vscode.Position(startPosition.row, startPosition.column), new vscode.Position(endPosition.row, endPosition.column));
 
         return vscode.window.activeTextEditor.document.getText(range);
+    }
+
+    static getText() {
+        return vscode.window.activeTextEditor.document.getText();
+    }
+
+    static insert(position, text) {
+        assert(position instanceof EditorPosition);
+
+        return vscode.window.activeTextEditor.edit((editBuilder) => {
+            editBuilder.insert(new vscode.Position(position.row, position.column), text);
+        });
     }
 }

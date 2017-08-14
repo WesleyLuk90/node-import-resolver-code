@@ -3,7 +3,7 @@
 import Editor from './Editor';
 import EditorPosition from './EditorPosition';
 
-const tokenMatcher = /[a-z_$]/i;
+const tokenMatcher = /[a-z_$0-9]/i;
 const maxScan = 100;
 
 export default class TokenFinder {

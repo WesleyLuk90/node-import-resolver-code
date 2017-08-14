@@ -1,4 +1,5 @@
 import ImportMatchers from './ImportMatchers';
+import EditorPosition from './EditorPosition';
 
 export default class ImportLocationSearcher {
     static fromSource(source) {
@@ -30,7 +31,7 @@ export default class ImportLocationSearcher {
                 backtrackCount = 0;
             }
         }
-        return [line - backtrackCount, 0];
+        return new EditorPosition(line - backtrackCount, 0);
     }
 
     isSkippable(line) {

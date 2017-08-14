@@ -1,10 +1,11 @@
 import ImportLocationSearcher from '../ImportLocationSearcher';
+import EditorPosition from '../EditorPosition';
 
 describe('ImportLocationSearcher', () => {
     function expectImportLocation(source, location) {
         it(`should determine the insert location for ${source} as ${location}`, () => {
             const searcher = ImportLocationSearcher.fromSource(source);
-            expect(searcher.getLocation()).toEqual(location);
+            expect(searcher.getLocation()).toEqual(new EditorPosition(location[0], location[1]));
         });
     }
 
